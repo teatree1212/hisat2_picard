@@ -1,0 +1,109 @@
+{
+  "name"          : "hisat2_picard",
+  "label"         : "Variant calling",
+  "appID"         : "",
+  "archive"       : "true",
+  "version"       : "0.0.0",
+  "executionType" : "CLI",
+  "shortDescription" : "To perform Brassica specific RNAseq alignment. ",
+  "longDescription"  : "This app helps to perform Brassica-specific RNAseq alignment. The user can choose aligning samples against 3 options of the pan transcriptome from He et al. 2015. The user can chose to align against the Brassica A (= Brassica rapa) or C (= Brassica oleracea) transcriptome only, or a combination of both (= Brassica napus). Alternatively, the user can also chose a different reference file as input. The app uses hisat2 to align input fasta sequences of any kind (paired or single end) against the selected reference. Then Picard Preprocess performs cleanup steps before variant calling can be performed and creates a creates a single BAM file from the SAM alignment files",
+
+  "checkpointable"   : true,
+  "executionSystem"  : "cyverseUK-Batch2",
+  "deploymentSystem" : "cyverseUK-Storage2",
+  "deploymentPath"   : "apps/hisat2_picard/agave",
+  "templatePath"     : "wrapper.sh",
+  "testPath"         : "wrapper.sh",
+  "parallelism"      : "SERIAL",
+  "shortDescription" : "Test for Retrieve_BIP_Phenotypes",
+  "longDescription"  : "Test for Retrieve_BIP_Phenotypes",
+  "helpURI"          : "https://bip.earlham.ac.uk/api_documentation",
+  "datePublished"    : "22. February 2017",
+  "author"           : "Annemarie Eckes",
+
+  "tags": [ "CyverseUK" ],
+  "ontology": [ ],
+  "inputs":[ {
+    "id": "input_1",
+      "details" : {
+        "label": "Brassica_A genome coding sequences",
+        "description": ".fasta file with Brassica_A genome coding sequences"
+      },
+      "value": {
+        "required" : "false",
+        "default" : "agave://data.iplantcollaborative.org/teatree/appexamples/Additional_file_6_Brassica_A_genome_cds_16-6-15.fa",
+        "visible":true
+      },
+      "semantics": {
+        "minCardinality": 1,
+	"maxCardinality": -1
+      }
+    },
+     {
+    "id": "input_2",
+      "details" : {
+        "label": "Brassica_C genome coding sequences",
+        "description": ".fasta file with Brassica_C genome coding sequences"
+      },
+      "value": {
+        "required" : "false",
+        "default" : "agave://data.iplantcollaborative.org/teatree/appexamples/Additional_file_7_Brassica_C_genome_cds_16-6-15.fa",
+        "visible":true
+      },
+      "semantics": {
+        "minCardinality": 1,
+  "maxCardinality": -1
+      }
+  }
+    ],
+    {
+   "id": "false",
+     "details" : {
+       "label": "Brassica_A and Brassica_C genome coding sequences ",
+       "description": ".fasta file with Brassica_A and Brassica_C genome coding sequences combined into Pantranscriptome of Brassica Napus",
+     },
+     "value": {
+       "required" : "true",
+       "default" : "agave://data.iplantcollaborative.org/teatree/appexamples/Seq_names.txt",
+       "visible":true
+     },
+     "semantics": {
+       "minCardinality": 1,
+ "maxCardinality": -1
+     }
+ }
+  "parameters" : [
+    {
+      "id": "param_1",
+      "details" : {
+        "label": "index base",
+        "description": "The suggested <ht2_index_base> name; choice of genome coding sequences, e.g. A_genome, C_genome or AC_genome. The chosen index name will confirm the reference to be used."
+      },
+      "value": {
+        "required" : "true",
+        "type": "string",
+        "default" : "",
+        "visible":true
+      },
+           "semantics" : {
+     	"maxCardinality" : 1
+      }
+     },
+     {
+      "id": "param_2",
+      "details" : {
+        "label": "index base",
+        "description": "The user's own <ht2_index_base> used during the build of an alternative reference genome."
+      },
+      "value": {
+        "required" : "false",
+        "type": "string",
+        "default" : "",
+        "visible":true
+          },
+      "semantics": {
+        "minCardinality": 1
+      }
+    }
+  ]
+}

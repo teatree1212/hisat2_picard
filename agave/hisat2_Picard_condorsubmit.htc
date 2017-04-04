@@ -1,0 +1,9 @@
+universe = docker
+docker_image =  docker pull limesbonn/hisat2
+
+output = Hisat2_picard.out
+error = Hisat2_picard.err
+log = Hisat2_picard.log
+
+request_memory = 12G
+request_cpus = 1

@@ -1,0 +1,14 @@
+{
+  "name"    : "hisat2_picard",
+  "appId"   : "hisat2_picard-0.0.0",
+  "archive" : "true",
+  "inputs": {
+    "input_1"   : "",
+    "input_2"   : "",
+    "input_3"   : ""
+  },
+  "parameters": {
+  "param_1"   : "Brassica_A",
+  "param_2"   : ""
+  }
+}
